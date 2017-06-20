@@ -1,3 +1,5 @@
+
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Calendar;
@@ -13,7 +15,7 @@ import my.beans.sample.MyCalendar01;
 /**
  * Servlet implementation class Servlet0001
  */
-@WebServlet("/my.beans.sample.BeansServlet21")
+@WebServlet("/BeansServlet21")
 public class BeansServlet21 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -37,10 +39,10 @@ public class BeansServlet21 extends HttpServlet {
 
 	    out.print("<html>");
 	    out.print("<head>");
-	    out.print("<title>my.beans.sample.BeansServlet21 テスト</title>");
+	    out.print("<title>BeansServlet21 テスト</title>");
 	    out.print("</head>");
 	    out.print("<body>");
-	    out.print("<h2>my.beans.sample.BeansServlet21 テスト</h2>");
+	    out.print("<h2>BeansServlet21 テスト</h2>");
 
 
 	    out.println("①今の日付を表示<br />");

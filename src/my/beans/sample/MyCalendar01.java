@@ -12,7 +12,11 @@ public class MyCalendar01 {
   protected Calendar cal = Calendar.getInstance();
   protected int year;
   protected int month;
-  protected int day;
+  protected int date;
+  protected int hourOfDay;
+  protected int minute;
+  protected int second;
+
   public static int NEN = 0;
   public static int TSUKI = 1;
   public static int HI = 2;
@@ -25,8 +29,7 @@ public class MyCalendar01 {
     this.cal.clear(Calendar.MONTH);
     this.cal.clear(Calendar.DAY_OF_MONTH);
     this.cal.clear(Calendar.AM_PM);
-    this.cal.clear(Calendar.HOUR);
-    this.cal.clear(Calendar.HOUR_OF_DAY);
+    this.cal.set(Calendar.HOUR_OF_DAY, 0);
     this.cal.clear(Calendar.MINUTE);
     this.cal.clear(Calendar.SECOND);
     this.cal.clear(Calendar.MILLISECOND);
@@ -34,11 +37,9 @@ public class MyCalendar01 {
 
     this.year = this.cal.get(Calendar.YEAR);
     this.month = this.cal.get(Calendar.MONTH) + 1;
-    this.day = this.cal.get(Calendar.DAY_OF_MONTH);
+    this.date = this.cal.get(Calendar.DAY_OF_MONTH);
 
-    this.cal.set(Calendar.YEAR, this.year);
-    this.cal.set(Calendar.MONTH, this.month - 1);
-    this.cal.set(Calendar.DAY_OF_MONTH, this.day);
+    this.cal.set(this.year, this.month - 1, this.date);
   }
 
   /**
@@ -46,15 +47,14 @@ public class MyCalendar01 {
    *
    * @param year 年.
    * @param month 月.
-   * @param day 日.
+   * @param date 日.
    */
-  public MyCalendar01(int year, int month, int day) {
+  public MyCalendar01(int year, int month, int date) {
     this.cal.clear(Calendar.YEAR);
     this.cal.clear(Calendar.MONTH);
     this.cal.clear(Calendar.DAY_OF_MONTH);
     this.cal.clear(Calendar.AM_PM);
-    this.cal.clear(Calendar.HOUR);
-    this.cal.clear(Calendar.HOUR_OF_DAY);
+    this.cal.set(Calendar.HOUR_OF_DAY, 0);
     this.cal.clear(Calendar.MINUTE);
     this.cal.clear(Calendar.SECOND);
     this.cal.clear(Calendar.MILLISECOND);
@@ -62,11 +62,9 @@ public class MyCalendar01 {
 
     this.year = year;
     this.month = month;
-    this.day = day;
+    this.date = date;
 
-    this.cal.set(Calendar.YEAR, this.year);
-    this.cal.set(Calendar.MONTH, this.month - 1);
-    this.cal.set(Calendar.DAY_OF_MONTH, this.day);
+    this.cal.set(this.year, this.month - 1, this.date);
   }
 
   /**
@@ -74,15 +72,14 @@ public class MyCalendar01 {
    *
    * @param year 年.
    * @param month 月.
-   * @param day 日.
+   * @param date 日.
    */
-  public MyCalendar01(String year, String month, String day) {
+  public MyCalendar01(String year, String month, String date) {
     this.cal.clear(Calendar.YEAR);
     this.cal.clear(Calendar.MONTH);
     this.cal.clear(Calendar.DAY_OF_MONTH);
     this.cal.clear(Calendar.AM_PM);
-    this.cal.clear(Calendar.HOUR);
-    this.cal.clear(Calendar.HOUR_OF_DAY);
+    this.cal.set(Calendar.HOUR_OF_DAY, 0);
     this.cal.clear(Calendar.MINUTE);
     this.cal.clear(Calendar.SECOND);
     this.cal.clear(Calendar.MILLISECOND);
@@ -90,11 +87,9 @@ public class MyCalendar01 {
 
     this.year = Integer.parseInt(year);
     this.month = Integer.parseInt(month);
-    this.day = Integer.parseInt(day);
+    this.date = Integer.parseInt(date);
 
-    this.cal.set(Calendar.YEAR, this.year);
-    this.cal.set(Calendar.MONTH, this.month - 1);
-    this.cal.set(Calendar.DAY_OF_MONTH, this.day);
+    this.cal.set(this.year, this.month - 1, this.date);
   }
 
   /**
@@ -136,19 +131,19 @@ public class MyCalendar01 {
   /**
    * setDay. 引数を日としてセットする.
    *
-   * @param day 日.
+   * @param date 日.
    */
-  public void setDay(int day) {
-    this.day = day;
+  public void setDay(int date) {
+    this.date = date;
   }
 
   /**
    * setDay. 引数を日としてセットする.
    *
-   * @param day 日.
+   * @param date 日.
    */
-  public void setDay(String day) {
-    this.day = Integer.parseInt(day);
+  public void setDay(String date) {
+    this.date = Integer.parseInt(date);
   }
 
   /**
@@ -156,12 +151,12 @@ public class MyCalendar01 {
    *
    * @param year 年.
    * @param month 月.
-   * @param day 日.
+   * @param date 日.
    */
-  public void set(int year, int month, int day) {
+  public void set(int year, int month, int date) {
     this.year = year;
     this.month = month;
-    this.day = day;
+    this.date = date;
   }
 
   /**
@@ -169,12 +164,12 @@ public class MyCalendar01 {
    *
    * @param year 年.
    * @param month 月.
-   * @param day 日.
+   * @param date 日.
    */
-  public void set(String year, String month, String day) {
+  public void set(String year, String month, String date) {
     this.year = Integer.parseInt(year);
     this.month = Integer.parseInt(month);
-    this.day = Integer.parseInt(day);
+    this.date = Integer.parseInt(date);
   }
 
   /**
@@ -192,7 +187,7 @@ public class MyCalendar01 {
         this.month = param;
         break;
       case 2:
-        this.day = param;
+        this.date = param;
         break;
       default:
         break;
@@ -214,7 +209,7 @@ public class MyCalendar01 {
         this.month = Integer.parseInt(param);
         break;
       case 2:
-        this.day = Integer.parseInt(param);
+        this.date = Integer.parseInt(param);
         break;
       default:
         break;
@@ -224,19 +219,19 @@ public class MyCalendar01 {
   /**
    * add. 引数の値を加算する.
    *
-   * @param day 加算日.
+   * @param date 加算日.
    */
-  public void add(int day) {
-    this.day += day;
+  public void add(int date) {
+    this.date += date;
   }
 
   /**
    * add. 引数の値を加算する.
    *
-   * @param day 加算日.
+   * @param date 加算日.
    */
-  public void add(String day) {
-    this.day += Integer.parseInt(day);
+  public void add(String date) {
+    this.date += Integer.parseInt(date);
   }
 
   /**
@@ -254,7 +249,7 @@ public class MyCalendar01 {
         this.month += param;
         break;
       case 2:
-        this.day += param;
+        this.date += param;
         break;
       default:
         break;
@@ -276,7 +271,7 @@ public class MyCalendar01 {
         this.month += Integer.parseInt(param);
         break;
       case 2:
-        this.day += Integer.parseInt(param);
+        this.date += Integer.parseInt(param);
         break;
       default:
         break;
@@ -288,14 +283,12 @@ public class MyCalendar01 {
    *
    * @param year 年.
    * @param month 月.
-   * @param day 日.
+   * @param date 日.
    * @return 引数の年月日との日数差.
    */
-  public int difference(int year, int month, int day) {
+  public int difference(int year, int month, int date) {
     Calendar differentCal = Calendar.getInstance();
-    differentCal.set(Calendar.YEAR, year);
-    differentCal.set(Calendar.MONTH, month - 1);
-    differentCal.set(Calendar.DAY_OF_MONTH, day);
+    differentCal.set(year, month - 1, date);
     long timeInMillis = this.cal.getTimeInMillis() - differentCal.getTimeInMillis();
     timeInMillis = timeInMillis / 1000 / 60 / 60 / 24;
     String timeInMillisAbs = Long.toString(Math.abs(timeInMillis));
@@ -307,14 +300,12 @@ public class MyCalendar01 {
    *
    * @param year 年.
    * @param month 月.
-   * @param day 日.
+   * @param date 日.
    * @return 引数の年月日との日数差.
    */
-  public int difference(String year, String month, String day) {
+  public int difference(String year, String month, String date) {
     Calendar differentCal = Calendar.getInstance();
-    differentCal.set(Calendar.YEAR, Integer.parseInt(year));
-    differentCal.set(Calendar.MONTH, Integer.parseInt(month) - 1);
-    differentCal.set(Calendar.DAY_OF_MONTH, Integer.parseInt(day));
+    differentCal.set(Integer.parseInt(year), Integer.parseInt(month) - 1, Integer.parseInt(date));
     long timeInMillis = this.cal.getTimeInMillis() - differentCal.getTimeInMillis();
     timeInMillis = timeInMillis / 1000 / 60 / 60 / 24;
     String timeInMillisAbs = Long.toString(Math.abs(timeInMillis));
@@ -345,7 +336,7 @@ public class MyCalendar01 {
    * @return 日.
    */
   public String getDay() {
-    return Integer.toString(this.day);
+    return Integer.toString(this.date);
   }
 
   /**
@@ -354,9 +345,15 @@ public class MyCalendar01 {
    * @return yyyy年MM月dd日
    */
   public String getJapaneseFormat() {
-    this.cal.set(Calendar.YEAR, this.year);
-    this.cal.set(Calendar.MONTH, this.month - 1);
-    this.cal.set(Calendar.DAY_OF_MONTH, this.day);
+    this.cal.clear(Calendar.YEAR);
+    this.cal.clear(Calendar.MONTH);
+    this.cal.clear(Calendar.DAY_OF_MONTH);
+    this.cal.clear(Calendar.AM_PM);
+    this.cal.set(Calendar.HOUR_OF_DAY, 0);
+    this.cal.clear(Calendar.MINUTE);
+    this.cal.clear(Calendar.SECOND);
+    this.cal.clear(Calendar.MILLISECOND);
+    this.cal.set(this.year, this.month - 1, this.date);
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日", Locale.JAPANESE);
     return sdf.format(this.cal.getTime());
@@ -368,9 +365,15 @@ public class MyCalendar01 {
    * @return 指定された日付の曜日.
    */
   public String getJapaneseWeek() {
-    this.cal.set(Calendar.YEAR, this.year);
-    this.cal.set(Calendar.MONTH, this.month - 1);
-    this.cal.set(Calendar.DAY_OF_MONTH, this.day);
+    this.cal.clear(Calendar.YEAR);
+    this.cal.clear(Calendar.MONTH);
+    this.cal.clear(Calendar.DAY_OF_MONTH);
+    this.cal.clear(Calendar.AM_PM);
+    this.cal.set(Calendar.HOUR_OF_DAY, 0);
+    this.cal.clear(Calendar.MINUTE);
+    this.cal.clear(Calendar.SECOND);
+    this.cal.clear(Calendar.MILLISECOND);
+    this.cal.set(this.year, this.month - 1, this.date);
 
     SimpleDateFormat sdf = new SimpleDateFormat("EEE曜日", Locale.JAPANESE);
     return sdf.format(this.cal.getTime());
@@ -382,9 +385,15 @@ public class MyCalendar01 {
    * @return yyyy/MM/dd
    */
   public String getSimpleFormat() {
-    this.cal.set(Calendar.YEAR, this.year);
-    this.cal.set(Calendar.MONTH, this.month - 1);
-    this.cal.set(Calendar.DAY_OF_MONTH, this.day);
+    this.cal.clear(Calendar.YEAR);
+    this.cal.clear(Calendar.MONTH);
+    this.cal.clear(Calendar.DAY_OF_MONTH);
+    this.cal.clear(Calendar.AM_PM);
+    this.cal.set(Calendar.HOUR_OF_DAY, 0);
+    this.cal.clear(Calendar.MINUTE);
+    this.cal.clear(Calendar.SECOND);
+    this.cal.clear(Calendar.MILLISECOND);
+    this.cal.set(this.year, this.month - 1, this.date);
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.JAPANESE);
     return sdf.format(this.cal.getTime());
@@ -397,9 +406,15 @@ public class MyCalendar01 {
    * @return 指定された曜日の英語表記.
    */
   public String getEnglishWeek(Calendar cal) {
-    this.cal.set(Calendar.YEAR, this.year);
-    this.cal.set(Calendar.MONTH, this.month - 1);
-    this.cal.set(Calendar.DAY_OF_MONTH, this.day);
+    this.cal.clear(Calendar.YEAR);
+    this.cal.clear(Calendar.MONTH);
+    this.cal.clear(Calendar.DAY_OF_MONTH);
+    this.cal.clear(Calendar.AM_PM);
+    this.cal.set(Calendar.HOUR_OF_DAY, 0);
+    this.cal.clear(Calendar.MINUTE);
+    this.cal.clear(Calendar.SECOND);
+    this.cal.clear(Calendar.MILLISECOND);
+    this.cal.set(this.year, this.month - 1, this.date);
 
     SimpleDateFormat sdf = new SimpleDateFormat("EEE", Locale.ENGLISH);
     return sdf.format(cal.getTime());
